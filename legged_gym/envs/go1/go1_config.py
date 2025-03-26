@@ -3,7 +3,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class Go1RoughCfg(LeggedRobotCfg):
     class env(LeggedRobotCfg.env):
-        num_observations = 43
+        num_observations = 42
         episode_length_s = 10
 
     class terrain(LeggedRobotCfg.terrain):
@@ -44,7 +44,7 @@ class Go1RoughCfg(LeggedRobotCfg):
         name = "go1"
         foot_name = "foot"
         penalize_contacts_on = ["thigh", "calf"]
-        terminate_after_contacts_on = ["base"]
+        terminate_after_contacts_on = []
         flip_visual_attachments = False
         self_collisions = 0  # 1 to disable, 0 to enable...bitwise filter
 
@@ -64,15 +64,22 @@ class Go1RoughCfg(LeggedRobotCfg):
     class commands(LeggedRobotCfg.commands):
         pitch = -1.57
         roll = 0.
+    
+    class domain_rand(LeggedRobotCfg.domain_rand):
+        push_robots = True
+        push_interval_s = 2
+        max_push_vel_xy = 1.
+        randomize_base_mass = True
+        added_mass_range = [-5., 5.]
 
 class Go1RoughCfgPPO(LeggedRobotCfgPPO):
+    seed = 1
+    class algorithm(LeggedRobotCfgPPO.algorithm):
+        entropy_coef = 0.01
     class policy(LeggedRobotCfgPPO.policy):
         init_noise_std = 0.5
-
-    class algorithm(LeggedRobotCfgPPO.algorithm):
-        entropy_coef = 0.01        
-
+        
     class runner(LeggedRobotCfgPPO.runner):
         run_name = ''
         experiment_name = 'go1'
-        max_iterations = 600
+        max_iterations = 3000
