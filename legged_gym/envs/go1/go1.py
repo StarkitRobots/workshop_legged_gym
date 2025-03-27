@@ -7,7 +7,6 @@ class Go1(LeggedRobot):
     def compute_observations(self):
         """ Computes observations
         """
-        episode_time_buf = self.episode_length_buf * self.dt
         self.obs_buf = torch.cat((  self.base_ang_vel  * self.obs_scales.ang_vel,
                                     self.projected_gravity,
                                     (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
@@ -44,7 +43,8 @@ class Go1(LeggedRobot):
         base_quat = self.root_states[:, 3:7]
         euler = get_euler_xyz(base_quat)
         episode_time_buf = self.episode_length_buf * self.dt
-        pitch_command = torch.clip(episode_time_buf * self.cfg.commands.pitch / 3., self.cfg.commands.pitch, 0.)
+        pitch_command = episode_time_buf * self.cfg.commands.pitch / self.cfg.commands.standup_duration
+        pitch_command = torch.clip(pitch_command, self.cfg.commands.pitch, 0.)
         error = torch.square(pitch_command - euler[:, 1]) + torch.square(self.cfg.commands.roll - euler[:, 0])
         return torch.exp(-error/self.cfg.rewards.tracking_sigma)
     
@@ -54,14 +54,3 @@ class Go1(LeggedRobot):
         for i, name in enumerate(hip_names):
             self.hip_indices[i] = self.dof_names.index(name)
         return torch.sum(torch.square(self.dof_pos[:, self.hip_indices] - self.default_dof_pos[:, self.hip_indices]), dim=1)
-    
-    def _reward_tracking_pitch_vel(self):
-        base_quat = self.root_states[:, 3:7]
-        euler = get_euler_xyz(base_quat)
-        episode_time_buf = self.episode_length_buf * self.dt
-        # pitch_command = torch.clip(self.cfg.commands.pitch, self.cfg.commands.pitch, 0.)
-        pitch = euler[:, 1]
-        command = torch.where(pitch >= self.cfg.commands.pitch, -1., 0.)
-        # print(command)
-        ang_vel_error = torch.square(command - self.base_ang_vel[:, 1])
-        return torch.exp(-ang_vel_error/self.cfg.rewards.tracking_sigma)

@@ -64,6 +64,7 @@ class Go1RoughCfg(LeggedRobotCfg):
     class commands(LeggedRobotCfg.commands):
         pitch = -1.57
         roll = 0.
+        standup_duration = 3.
     
     class domain_rand(LeggedRobotCfg.domain_rand):
         push_robots = True
@@ -82,4 +83,4 @@ class Go1RoughCfgPPO(LeggedRobotCfgPPO):
     class runner(LeggedRobotCfgPPO.runner):
         run_name = ''
         experiment_name = 'go1'
-        max_iterations = 3000
+        max_iterations = 500
