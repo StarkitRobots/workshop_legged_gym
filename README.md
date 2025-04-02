@@ -26,8 +26,7 @@ Paper: https://arxiv.org/abs/2109.11978
 
 ### Installation ###
 1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
-2. Install pytorch 1.10 with cuda-11.3:
-    - `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
+2. Install pytorch. Follow https://pytorch.org/get-started/locally/
 3. Install Isaac Gym
    - Download and install Isaac Gym Preview 3 (Preview 2 will not work!) from https://developer.nvidia.com/isaac-gym
    - `cd isaacgym/python && pip install -e .`
@@ -39,6 +38,8 @@ Paper: https://arxiv.org/abs/2109.11978
 5. Install legged_gym
     - Clone this repository `git clone -b workshop https://github.com/StarkitRobots/workshop_legged_gym` 
    - `cd legged_gym && pip install -e .`
+6. Install numpy version <1.24 and tensorboard:
+    - `pip install "numpy<1.24" tensorboard`
 
 ### CODE STRUCTURE ###
 1. Each environment is defined by an env file (`legged_robot.py`) and a config file (`legged_robot_config.py`). The config file contains two classes: one containing  all the environment parameters (`LeggedRobotCfg`) and one for the training parameters (`LeggedRobotCfgPPo`).  
