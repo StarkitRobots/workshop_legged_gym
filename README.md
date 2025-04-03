@@ -1,5 +1,6 @@
 # Adoptation of Legged Gym project for ROS meetup workshop
 This is a fork of https://github.com/leggedrobotics/legged_gym. This fork was created by MIPT for Ros meetup workshop.
+The "master" branch contains original repo. The "workshop" branch contains solution of the workshop's task.
 Repo with urdf and meshes for Unitree Go1: https://github.com/StarkitRobots/go1_description.git 
 # Isaac Gym Environments for Legged Robots #
 This repository provides the environment used to train ANYmal (and other robots) to walk on rough terrain using NVIDIA's Isaac Gym.
@@ -36,7 +37,7 @@ Paper: https://arxiv.org/abs/2109.11978
    - Clone https://github.com/leggedrobotics/rsl_rl
    -  `cd rsl_rl && git checkout v1.0.2 && pip install -e .` 
 5. Install legged_gym
-    - Clone this repository `git clone -b workshop https://github.com/StarkitRobots/workshop_legged_gym` 
+    - Clone this repository `git clone https://github.com/StarkitRobots/workshop_legged_gym` 
    - `cd legged_gym && pip install -e .`
 6. Install numpy version <1.24 and tensorboard:
     - `pip install "numpy<1.24" tensorboard`
