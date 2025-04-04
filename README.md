@@ -32,13 +32,13 @@ Paper: https://arxiv.org/abs/2109.11978
    - Download and install Isaac Gym Preview 3 (Preview 2 will not work!) from https://developer.nvidia.com/isaac-gym
    - `cd isaacgym/python && pip install -e .`
    - Try running an example `cd examples && python 1080_balls_of_solitude.py`
-   - For troubleshooting check docs `isaacgym/docs/index.html`)
+   - For troubleshooting check docs `isaacgym/docs/index.html`
 4. Install rsl_rl (PPO implementation)
    - Clone https://github.com/leggedrobotics/rsl_rl
    -  `cd rsl_rl && git checkout v1.0.2 && pip install -e .` 
 5. Install legged_gym
     - Clone this repository `git clone https://github.com/StarkitRobots/workshop_legged_gym` 
-   - `cd legged_gym && pip install -e .`
+   - `cd workshop_legged_gym && pip install -e .`
 6. Install numpy version <1.24 and tensorboard:
     - `pip install "numpy<1.24" tensorboard`
 
