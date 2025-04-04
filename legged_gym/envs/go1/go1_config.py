@@ -41,7 +41,10 @@ class Go1RoughCfg(LeggedRobotCfg):
         decimation = 4
 
     class asset(LeggedRobotCfg.asset):
-        file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/go1/urdf/go1.urdf'
+        # <YOUR CODE>
+        # add urdf and meshes from https://github.com/StarkitRobots/go1_description.git
+        # file = /path/to/urdf/file
+        file = None
         name = "go1"
         foot_name = "foot"
         penalize_contacts_on = ["thigh", "calf"]
