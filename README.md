@@ -1,3 +1,9 @@
+# Adoptation of Legged Gym project for ROS meetup workshop
+This is a fork of https://github.com/leggedrobotics/legged_gym. This fork was created by MIPT for Ros meetup workshop.
+The "master" branch contains original repo.
+Start from the branch "develop". Look for "# <YOUR CODE>". 
+The "workshop" branch contains solution of the workshop's task.
+Repo with urdf and meshes for Unitree Go1: https://github.com/StarkitRobots/go1_description.git 
 # Isaac Gym Environments for Legged Robots #
 This repository provides the environment used to train ANYmal (and other robots) to walk on rough terrain using NVIDIA's Isaac Gym.
 It includes all components needed for sim-to-real transfer: actuator network, friction & mass randomization, noisy observations and random pushes during training.  
@@ -23,19 +29,20 @@ Paper: https://arxiv.org/abs/2109.11978
 
 ### Installation ###
 1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
-2. Install pytorch 1.10 with cuda-11.3:
-    - `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
+2. Install pytorch. Follow https://pytorch.org/get-started/locally/
 3. Install Isaac Gym
    - Download and install Isaac Gym Preview 3 (Preview 2 will not work!) from https://developer.nvidia.com/isaac-gym
    - `cd isaacgym/python && pip install -e .`
    - Try running an example `cd examples && python 1080_balls_of_solitude.py`
-   - For troubleshooting check docs `isaacgym/docs/index.html`)
+   - For troubleshooting check docs `isaacgym/docs/index.html`
 4. Install rsl_rl (PPO implementation)
    - Clone https://github.com/leggedrobotics/rsl_rl
    -  `cd rsl_rl && git checkout v1.0.2 && pip install -e .` 
 5. Install legged_gym
-    - Clone this repository
-   - `cd legged_gym && pip install -e .`
+    - Clone this repository `git clone https://github.com/StarkitRobots/workshop_legged_gym` 
+   - `cd workshop_legged_gym && pip install -e .`
+6. Install numpy version <1.24 and tensorboard:
+    - `pip install "numpy<1.24" tensorboard`
 
 ### CODE STRUCTURE ###
 1. Each environment is defined by an env file (`legged_robot.py`) and a config file (`legged_robot_config.py`). The config file contains two classes: one containing  all the environment parameters (`LeggedRobotCfg`) and one for the training parameters (`LeggedRobotCfgPPo`).  
