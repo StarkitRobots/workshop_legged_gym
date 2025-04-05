@@ -4,7 +4,8 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 class Go1RoughCfg(LeggedRobotCfg):
     class env(LeggedRobotCfg.env):
         #<YOUR CODE>
-        #calculate num_observations for Go1 
+        # claculate num_observations for new observation vector
+        num_observations = 48
         episode_length_s = 10
 
     class terrain(LeggedRobotCfg.terrain):
@@ -56,11 +57,11 @@ class Go1RoughCfg(LeggedRobotCfg):
             tracking_ang_vel = 0.
             lin_vel_z = 0.
             ang_vel_xy = 0.
-            feet_air_time = 0.
-            tracking_pitch = 1.5
-            hip_pos = -0.5
+            feet_air_time = 0.           
             feet_drag = -0.
             collision = 0.
+            # YOUR CODE
+            # add scales for new rewards
     
     # YOUR CODE 
     # add parameters for new rewards

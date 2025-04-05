@@ -29,9 +29,11 @@ class Go1(LeggedRobot):
         self.add_noise = self.cfg.noise.add_noise
         noise_scales = self.cfg.noise.noise_scales
         noise_level = self.cfg.noise.noise_level
-        # <YOUR CODE>
-        # рассчитайте правильные индексы, чтобы вектор шумов noise_vec соответсвовал вектору наблюдений self.obs_buf
-        # для примера возьмите _get_noise_scale_vec из envs/base/legged_robot
+        noise_vec[:3] = noise_scales.ang_vel * noise_level * self.obs_scales.ang_vel
+        noise_vec[3:6] = noise_scales.gravity * noise_level
+        noise_vec[6:18] = noise_scales.dof_pos * noise_level * self.obs_scales.dof_pos
+        noise_vec[18:30] = noise_scales.dof_vel * noise_level * self.obs_scales.dof_vel
+        noise_vec[30:42] = 0. # previous actions
         return noise_vec
 
     def _reward_tracking_pitch(self):
