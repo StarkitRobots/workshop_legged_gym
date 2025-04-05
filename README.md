@@ -31,7 +31,7 @@ Paper: https://arxiv.org/abs/2109.11978
 1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
 2. Install pytorch. Follow https://pytorch.org/get-started/locally/
 3. Install Isaac Gym
-   - Download and install Isaac Gym Preview 3 (Preview 2 will not work!) from https://developer.nvidia.com/isaac-gym
+   - Get Isaac Gym from organistaors or download from https://developer.nvidia.com/isaac-gym
    - `cd isaacgym/python && pip install -e .`
    - Try running an example `cd examples && python 1080_balls_of_solitude.py`
    - For troubleshooting check docs `isaacgym/docs/index.html`
