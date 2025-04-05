@@ -1,6 +1,8 @@
 # Adoptation of Legged Gym project for ROS meetup workshop
 This is a fork of https://github.com/leggedrobotics/legged_gym. This fork was created by MIPT for Ros meetup workshop.
-The "master" branch contains original repo. The "workshop" branch contains solution of the workshop's task.
+The "master" branch contains original repo.
+Start from the branch "develop". Look for "# <YOUR CODE>". 
+The "workshop" branch contains solution of the workshop's task.
 Repo with urdf and meshes for Unitree Go1: https://github.com/StarkitRobots/go1_description.git 
 # Isaac Gym Environments for Legged Robots #
 This repository provides the environment used to train ANYmal (and other robots) to walk on rough terrain using NVIDIA's Isaac Gym.
@@ -29,7 +31,7 @@ Paper: https://arxiv.org/abs/2109.11978
 1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
 2. Install pytorch. Follow https://pytorch.org/get-started/locally/
 3. Install Isaac Gym
-   - Download and install Isaac Gym Preview 3 (Preview 2 will not work!) from https://developer.nvidia.com/isaac-gym
+   - Get Isaac Gym from workshop organisators or download it from https://developer.nvidia.com/isaac-gym
    - `cd isaacgym/python && pip install -e .`
    - Try running an example `cd examples && python 1080_balls_of_solitude.py`
    - For troubleshooting check docs `isaacgym/docs/index.html`
